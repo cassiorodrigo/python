@@ -1,0 +1,28 @@
+<hangman>:
+    orientation:'vertical'
+    BoxLayout
+        orientation:'vertical'
+        BoxLayout:
+            Label:
+                text:'JOGO DA FORCA (v1.0)'
+                font_size: 26
+                size_hint_y:None
+                height: 15
+        Label:
+            text:'Digite a palavra a ser advinhada no campo abaixo'
+            height: 20
+    BoxLayout:
+        TextInput:
+            id: palavra
+            size_hint_y:None
+            height:50
+            size_hint_x:None
+            width: 500
+            font_size: 30
+        Button:
+            size_hint_y:None
+            height:50
+            size_hint_x:None
+            width: 200
+            text:'Confirmar Palavra'
+            on_release:root.recpal()

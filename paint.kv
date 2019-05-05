@@ -1,0 +1,93 @@
+<Gerenciador>:
+    slider_colors: 0, 0, 0, 0
+    Primeira:
+        name:"primeira"
+
+        canvas.before:
+            Color:
+                rgba: root.slider_colors
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            padding:20
+            spacing:30
+            orientation:"vertical"
+            BoxLayout:
+                size_hint_y:0.25
+                TextInput:
+                    id:palavra
+                    multiline: False
+
+            BoxLayout:
+                size_hint:1, 0.15
+                orientation:'vertical'
+                BoxLayout:
+
+                    Slider:
+                        id:red
+                        step:0.001
+                        min:0
+                        max:1
+                        on_value:root.slider_colors[0] = self.value
+
+                    Slider:
+                        id:green
+                        step:0.001
+                        min:0
+                        max:1
+                        on_value:root.slider_colors[1] = self.value
+
+                    Slider:
+                        id:blue
+                        step:0.001
+                        min:0
+                        max:1
+                        on_value:root.slider_colors[2] = self.value
+
+                    Slider:
+                        id:transp
+                        step:0.001
+                        min:0
+                        max:1
+                        on_value:root.slider_colors[3] = self.value
+
+                BoxLayout:
+                    Label:
+                        text:'Vermelho'
+
+                    Label:
+                        text:'Verde'
+
+                    Label:
+                        text:'Azul'
+
+                    Label:
+                        text:'Transparencia'
+            BoxLayout:
+                Button:
+                    text:'Ok'
+                    size_hint_y:0.20
+                    on_release:root.current = "segunda"
+                Button:
+                    size_hint_y:0.20
+                    text:'Sair'
+                    on_release:exit()
+    Segunda:
+        name:"segunda"
+        orientation:'vertical'
+        BoxLayout:
+            orientation:'vertical'
+            BoxLayout:
+                Scatter:
+                    Label:
+                        id:show_palavra
+                        font_size: 300
+                        size:self.texture_size
+                        text:root.ids.palavra.text
+                        color: root.slider_colors
+            BoxLayout:
+                size_hint_y:0.13
+                Button:
+                    text:'Voltar'
+                    on_release:root.current = "primeira"
